@@ -1,6 +1,6 @@
 <div class="card-container">
   <!-- aca agarramos el objeto products, y vamos mostrando cada producto con su titulo, marca, y precio -->
-  <mat-card *ngFor="let product of products">
+  <mat-card class="card-content" *ngFor="let product of products">
     <mat-card-header>
       <mat-card-title>{{ product.title }}</mat-card-title>
       <mat-card-subtitle>{{ product.brand }}</mat-card-subtitle>
