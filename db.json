@@ -1,0 +1,55 @@
+{
+    "products":[{
+        "salePrice": 3.96,
+        "price": 9.9,
+        "title": "Bel Accent Colorblock Beanie",
+       
+        "brand":"ACC",
+        "id": "2000314836"
+        
+    },
+    {
+        "salePrice": 3.96,
+        "price": 9.9,
+        "title": "Bel Accent Colorblock Beanie",
+       
+        "brand":"ACC",
+        "id": "2000314835"
+        
+    },
+    {
+        "salePrice": 3.96,
+        "price": 9.9,
+        "title": "Bel Accent Colorblock Beanie",
+       
+        "brand":"ACC",
+        "id": "2000314834"
+        
+    },
+    {
+        "salePrice": 3.96,
+        "price": 9.9,
+        "title": "Bel Accent Colorblock Beanie",
+       
+        "brand":"ACC",
+        "id": "2000314833"
+        
+    },{
+        "salePrice": 3.96,
+        "price": 9.9,
+        "title": "Bel Accent Colorblock Beanie",
+       
+        "brand":"ACC",
+        "id": "2000314832"
+        
+    },
+    {
+        "salePrice": 3.96,
+        "price": 9.9,
+        "title": "Bel Accent Colorblock Beanie",
+       
+        "brand":"ACC",
+        "id": "2000314831"
+        
+    }]
+} 
