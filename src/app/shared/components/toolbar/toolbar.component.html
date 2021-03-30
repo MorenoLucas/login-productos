@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span>Tienda Online - Angualar</span>
+  <span class="toolvar-space"></span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu>
+    <button mat-menu-item [routerLink]="['/products', 'add']">
+      Agregar Producto
+    </button>
+  </mat-menu>
+</mat-toolbar>

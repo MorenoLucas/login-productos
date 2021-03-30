@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
 
@@ -17,16 +18,25 @@ export class ProductAddComponent implements OnInit {
     thumbImage: new FormControl(''),
   });
 
-  constructor(private service: ProductsService, private route: Router) {}
+  constructor(
+    private service: ProductsService,
+    private route: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {}
   submit() {
     if (this.form.valid) {
       const product = this.form.value;
-      // agregamos el objeto product
+      // agregamos el objeto product a la lista de productos
       console.log('guardado', product);
       this.service.add(product).subscribe((result) => {
         console.log('el producto a sido agregado');
+        this.route.navigate(['']);
+        // mensaje de confirmación
+        this.snackBar.open('Producto agregado', 'Cerrar', {
+          duration: 3000,
+        });
       });
     } else {
       console.error('formulario invalido');
