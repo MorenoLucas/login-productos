@@ -6,9 +6,10 @@ import { ProductsComponent } from './products.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { MaterialModule } from '../shared/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductsListComponent],
+  declarations: [ProductsComponent, ProductsListComponent, ProductAddComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
