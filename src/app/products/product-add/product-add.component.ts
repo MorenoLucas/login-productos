@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ProductsService } from '../shared/services/products.service';
 
 @Component({
   selector: 'ed-product-add',
@@ -15,7 +17,22 @@ export class ProductAddComponent implements OnInit {
     thumbImage: new FormControl(''),
   });
 
-  constructor() {}
+  constructor(private service: ProductsService, private route: Router) {}
 
   ngOnInit(): void {}
+  submit() {
+    if (this.form.valid) {
+      const product = this.form.value;
+      // agregamos el objeto product
+      console.log('guardado', product);
+      this.service.add(product).subscribe((result) => {
+        console.log('el producto a sido agregado');
+      });
+    } else {
+      console.error('formulario invalido');
+    }
+  }
+  cancel() {
+    this.route.navigate(['']);
+  }
 }
