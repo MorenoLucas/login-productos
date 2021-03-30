@@ -2,18 +2,43 @@
   <mat-card-title> ADD NEW PRODUCT </mat-card-title>
   <img mat-card-image src="" alt="" />
   <mat-card-content>
-    <form>
+    <form [formGroup]="form">
       <mat-form-field>
-        <input type="text" matInput placeholder="Tittle" />
+        <input
+          type="text"
+          matInput
+          placeholder="Tittle"
+          formControlName="title"
+        />
       </mat-form-field>
       <mat-form-field>
-        <input type="text" matInput placeholder="Brand" /> </mat-form-field
+        <input
+          type="text"
+          matInput
+          placeholder="Brand"
+          formControlName="brand"
+        /> </mat-form-field
       ><mat-form-field>
-        <input type="text" matInput placeholder="Price" /> </mat-form-field
+        <input
+          type="text"
+          matInput
+          placeholder="Price"
+          formControlName="price"
+        /> </mat-form-field
       ><mat-form-field>
-        <input type="text" matInput placeholder="Sale Price" /> </mat-form-field
+        <input
+          type="text"
+          matInput
+          placeholder="Sale Price"
+          formControlName="salePrice"
+        /> </mat-form-field
       ><mat-form-field>
-        <input type="text" matInput placeholder="Thumb Image URL" />
+        <input
+          type="text"
+          matInput
+          placeholder="Thumb Image URL"
+          formControlName="thumbImage"
+        />
       </mat-form-field>
     </form>
   </mat-card-content>
