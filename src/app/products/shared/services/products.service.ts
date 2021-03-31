@@ -30,4 +30,7 @@ export class ProductsService {
       product
     );
   }
+  delete(id: string): Observable<Product> {
+    return this.httpClient.delete<Product>(`${PRODUCTS_URL}/${id}`);
+  }
 }

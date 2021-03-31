@@ -15,8 +15,10 @@
       <p>{{ product.price | currency }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>EDIT</button>
-      <button mat-button>DELETE</button>
+      <button mat-button [routerLink]="['/products', 'edit', product.id]">
+        EDIT
+      </button>
+      <button mat-button (click)="deleteProduct(product)">DELETE</button>
     </mat-card-actions>
   </mat-card>
 </div>
