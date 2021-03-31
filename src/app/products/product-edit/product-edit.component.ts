@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ProductsService } from '../shared/services/products.service';
 
 @Component({
   selector: 'ed-product-edit',
@@ -14,9 +16,21 @@ export class ProductEditComponent implements OnInit {
     salePrice: new FormControl(''),
     thumbImage: new FormControl(''),
   });
-  constructor() {}
-
-  ngOnInit(): void {}
+  id: string;
+  constructor(
+    private route: ActivatedRoute,
+    private service: ProductsService
+  ) {}
+  // capturamos el ID del producto, haciendo snapshot del servicio ActivatedRoute
+  ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    // accedemos el products/id, enviandole el parametro ID que acabamos de capturar
+    this.service.get(this.id).subscribe((product) => {
+      console.log('producto', product);
+      // agarra los parametros que necesita, sin romper como el setValue
+      this.form.patchValue(product);
+    });
+  }
   submit() {}
   cancel() {}
 }
