@@ -10,9 +10,10 @@ import { ProductAddComponent } from './product-add/product-add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductsListComponent, ProductAddComponent],
+  declarations: [ProductsComponent, ProductsListComponent, ProductAddComponent, ProductEditComponent],
   imports: [
     CommonModule,
     ProductsRoutingModule,
