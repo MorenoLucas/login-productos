@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'ed-product-edit',
@@ -19,7 +20,9 @@ export class ProductEditComponent implements OnInit {
   id: string;
   constructor(
     private route: ActivatedRoute,
-    private service: ProductsService
+    private service: ProductsService,
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
   // capturamos el ID del producto, haciendo snapshot del servicio ActivatedRoute
   ngOnInit() {
@@ -36,10 +39,16 @@ export class ProductEditComponent implements OnInit {
       const product = this.form.value;
       product.id = this.id;
       console.log('actualizamos', product);
-      this.service
-        .update(product)
-        .subscribe((result) => console.log('actualizamos', result));
+      this.service.update(product).subscribe((result) => {
+        console.log('actualizamos', result);
+        this.router.navigate(['/product']);
+        this.snackBar.open('Producto Actualizado', 'Cerrar', {
+          duration: 3000,
+        });
+      });
     }
   }
-  cancel() {}
+  cancel() {
+    this.router.navigate(['/product']);
+  }
 }
