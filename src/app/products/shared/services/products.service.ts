@@ -23,4 +23,11 @@ export class ProductsService {
     // product/id , accedemos a el
     return this.httpClient.get<Product>(`${PRODUCTS_URL}/${id}`);
   }
+  update(product: Product): Observable<Product> {
+    // actualiza el product, ademas de enviarle el id del mismo
+    return this.httpClient.put<Product>(
+      `${PRODUCTS_URL}/${product.id}`,
+      product
+    );
+  }
 }

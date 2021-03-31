@@ -31,6 +31,15 @@ export class ProductEditComponent implements OnInit {
       this.form.patchValue(product);
     });
   }
-  submit() {}
+  submit() {
+    if (this.form.valid) {
+      const product = this.form.value;
+      product.id = this.id;
+      console.log('actualizamos', product);
+      this.service
+        .update(product)
+        .subscribe((result) => console.log('actualizamos', result));
+    }
+  }
   cancel() {}
 }
