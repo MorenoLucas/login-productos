@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { ProductsModule } from './products/products.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProgressIndicatorInterceptor } from './shared/services/progress-indicator-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,13 @@ import { ProductsModule } from './products/products.module';
     MatInputModule,
     ProductsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ProgressIndicatorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
