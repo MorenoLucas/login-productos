@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ProductsService } from '../shared/services/products.service';
 import { Product } from '../shared/models/product';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'ed-product-add',
@@ -21,14 +23,24 @@ export class ProductAddComponent implements OnInit {
   submit(product: Product) {
     // agregamos el objeto product a la lista de productos
     console.log('guardado', product);
-    this.service.add(product).subscribe((result) => {
-      console.log('el producto a sido agregado');
-      this.route.navigate(['']);
-      // mensaje de confirmación
-      this.snackBar.open('Producto agregado', 'Cerrar', {
-        duration: 3000,
+    this.service
+      .add(product)
+      .pipe(
+        catchError((error) => {
+          this.snackBar.open(error, null, {
+            duration: 3000,
+          });
+          return EMPTY;
+        })
+      )
+      .subscribe((result) => {
+        console.log('el producto a sido agregado');
+        this.route.navigate(['']);
+        // mensaje de confirmación
+        this.snackBar.open('Producto agregado', 'Cerrar', {
+          duration: 3000,
+        });
       });
-    });
 
     console.error('formulario invalido');
   }

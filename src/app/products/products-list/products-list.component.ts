@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
 import { ConfirmDialogModel } from 'src/app/shared/models/confirm-dialog-model';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'ed-products-list',
@@ -39,10 +41,24 @@ export class ProductsListComponent implements OnInit {
     });
   }
   private loadProducts() {
-    this.service.getAll().subscribe((data) => {
-      console.log('data', data);
-      this.products = data;
-    });
+    this.service
+      .getAll()
+      .pipe(
+        catchError((error) => {
+          this.snackBar.open(
+            'No se pudo obtener los productos, intente mas tarde',
+            null,
+            {
+              duration: 3000,
+            }
+          );
+          return EMPTY;
+        })
+      )
+      .subscribe((data) => {
+        console.log('data', data);
+        this.products = data;
+      });
   }
   private sentDeleterequest(product: Product) {
     this.service.delete(product.id).subscribe((response) => {
