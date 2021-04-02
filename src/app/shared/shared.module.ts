@@ -8,9 +8,18 @@ import { RouterModule } from '@angular/router';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { ProgressIndicatorComponent } from './components/progress-indicator/progress-indicator.component';
 @NgModule({
-  declarations: [LoginComponent, ToolbarComponent, ConfirmDialogComponent, ProgressIndicatorComponent],
+  declarations: [
+    LoginComponent,
+    ToolbarComponent,
+    ConfirmDialogComponent,
+    ProgressIndicatorComponent,
+  ],
   imports: [CommonModule, MaterialModule, ReactiveFormsModule, RouterModule],
-  exports: [ToolbarComponent, ConfirmDialogComponent],
+  exports: [
+    ToolbarComponent,
+    ConfirmDialogComponent,
+    ProgressIndicatorComponent,
+  ],
   entryComponents: [ConfirmDialogComponent],
 })
 export class SharedModule {}
